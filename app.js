@@ -4,6 +4,7 @@ const logger = require('morgan');
 const app = express();
 
 const userRoutes = require('./routes/users');
+const flashcardsRoutes = require('./routes/flashcard');
 
 // MIDDLEWARE
 app.use(cors());
@@ -16,5 +17,6 @@ app.get('/', (req, res) => {
 
 // ROUTES
 app.use('/users', userRoutes);
+app.use('/flashcards', flashcardsRoutes);
 
 module.exports = app;

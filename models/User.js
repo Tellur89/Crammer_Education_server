@@ -25,14 +25,14 @@ const userSchema = new Schema(
 	{ timestamp: true }
 );
 
-userSchema.static.signup = async function (username, email, password) {
-	if (!username || !email || password) {
+userSchema.statics.signup = async function (username, email, password) {
+	if (!username || !email || !password) {
 		throw new Error('All fields must be filled');
 	}
 
-	if (!validator.isEmail(email)) {
-		throw new Error('Email is not valid');
-	}
+	// if (!validator.isEmail(email)) {
+	// 	throw new Error('Email is not valid');
+	// }
 
 	if (!validator.isStrongPassword(password)) {
 		throw new Error('Password is not strong enough');
@@ -55,7 +55,7 @@ userSchema.static.signup = async function (username, email, password) {
 	return user;
 };
 
-userSchema.static.login = async function (username, password) {
+userSchema.statics.login = async function (username, password) {
 	if (!username || !password) {
 		throw new Error('All fields must be filled');
 	}

@@ -11,18 +11,18 @@ const loginUser = async (req, res) => {
 	try {
 		const user = await User.login(username, password);
 
-		res.status(200).json({ username }); // TODO: send username and token to the client
+		res.status(200).json(user); // TODO: send username and token to the client
 	} catch (error) {
 		res.status(400).json({ massage: error.message });
 	}
 };
 
 const signupUser = async (req, res) => {
-	const { username, password } = req.body;
+	const { username, email, password } = req.body;
 	try {
-		const user = await User.signup(username, password);
+		const user = await User.signup(username, email, password);
 		// TODO: create token using user._id
-		res.status(200).json({ email }); // TODO: send the token to the client
+		res.status(200).json({ username, email }); // TODO: send the token to the client
 	} catch (error) {
 		res.status(400).json({ message: error.message });
 	}

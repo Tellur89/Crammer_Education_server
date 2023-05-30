@@ -11,7 +11,7 @@ const loginUser = async (req, res) => {
 	try {
 		const user = await User.login(username, password);
 
-		res.status(200).json({ username }); // TODO: send username and token to the client
+		res.status(200).json(user); // TODO: send username and token to the client
 	} catch (error) {
 		res.status(400).json({ massage: error.message });
 	}

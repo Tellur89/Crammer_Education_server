@@ -79,3 +79,10 @@ const deleteFlashcard = async (req, res) => {
 };
 
 // TODO: find cards by category
+
+module.exports = {
+  createFlashCard,
+  getFlashCards,
+  updateFlashcard,
+  deleteFlashcard,
+};

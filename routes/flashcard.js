@@ -10,7 +10,7 @@ router
 
 router
   .route(":id/flashcard")
-  .post(userController.updateFlashcard)
+  .patch(userController.updateFlashcard)
   .delete(userController.deleteFlashcard);
 
 module.exports = router;

@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 require('dotenv').config();
-const User = require('../models/User');
+const mongoose = require('mongoose');
 const SALT = process.env.BCRYPT_SALT_ROUNDS;
 
 const index = async (req, res) => {

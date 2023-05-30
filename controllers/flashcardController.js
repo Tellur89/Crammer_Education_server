@@ -15,6 +15,7 @@ const createFlashCard = async (req, res) => {
       category,
       //   user_id,
     });
+
     res.status(200).json(flashcard);
   } catch (error) {
     res.status(400).json({ error: error.message });

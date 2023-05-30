@@ -15,6 +15,7 @@ const flashcardSchema = new Schema(
     category: {
       type: String,
       required: true,
+      unique: false,
     },
     // username: {
     // 	type: String,

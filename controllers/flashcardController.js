@@ -22,11 +22,13 @@ const createFlashCard = async (req, res) => {
 
 // Read all flashcards of the user
 const getFlashCards = async (req, res) => {
-	//   const user_id = req.user._id;
 
-	const flashcards = await FlashCards.find({});
-	//display status then flashcards
-	res.status(200).json(flashcards);
+  //should find all the flashcard for the user
+  const flashcards = await FlashCards.find({}).sort({ create_At: -1 });
+  // console.log(req.headers.authorization);
+  //display status then flashcards
+  res.status(200).json(flashcards);
+
 };
 
 // Update single flashcard of the user
@@ -38,27 +40,37 @@ const updateFlashcard = async (req, res) => {
 
 	// FIND FLASHCARD BY ID
 
-	// check if id exists
-	//   if (!mongoose.Types.ObjectId.isValid(user_id)) {
-	//     //{ id }
-	//     return res.status(404).json({ error: "No such userid" });
-	//   }
-	// execute find and update cmd
-	try {
-		const updateCard = await FlashCards.findOneAndUpdate({ ...req.body });
+  // check if id exists
+  //   if (!mongoose.Types.ObjectId.isValid(user_id)) {
+  //     //{ id }
+  //     return res.status(404).json({ error: "No such userid" });
+  //   }
+  // execute find and update cmd
+  const { _id, frontSide, backSide, category } = req.body;
+  console.log(_id);
+  try {
+    const updateCard = await FlashCards.findOneAndUpdate(
+      { _id: _id },
+      {
+        frontSide,
+        backSide,
+        category,
+      }
+    );
 
-		if (!updateCard) {
-			res.status(404).json({ error: 'cant update flashcard' });
-		}
-		res.status(200).json(updateCard);
-	} catch (error) {
-		return res.status(404).json({ error: 'couldnt update' });
-	}
+    if (!updateCard) {
+      res.status(404).json({ error: "cant update flashcard" });
+    }
+    res.status(200).json({ update: "This card was updated" });
+  } catch (error) {
+    return res.status(404).json({ error: "couldnt update" });
+  }
 };
 
 // Delete single flashcard of the user
 // should delete the flashcard using its name not user id
 const deleteFlashcard = async (req, res) => {
+
 	// get frontSide from req.body
 	const { id } = req.params;
 	//   const { user_id } = req.params; //{ id }
@@ -76,6 +88,7 @@ const deleteFlashcard = async (req, res) => {
 	} catch (error) {
 		return res.status(404).json('DELETE SUCCESSFUL', { error: 'cant delete' });
 	}
+
 };
 
 // TODO: find cards by category

@@ -1,6 +1,6 @@
-const { Router } = require("express");
-const cardController = require("../controllers/flashcardController");
-const auth = require("../middleware/auth");
+const { Router } = require('express');
+const cardController = require('../controllers/flashcardController');
+const auth = require('../middleware/auth');
 
 const router = Router();
 

@@ -1,25 +1,23 @@
-const FlashCards = require("../models/Flashcard");
-const mongoose = require("mongoose");
+const FlashCards = require('../models/Flashcard');
+const mongoose = require('mongoose');
 
 //CRUD format
 
 // Create new flashcard
 const createFlashCard = async (req, res) => {
-  const { frontSide, backSide, category } = req.body;
+	const { frontSide, backSide, category } = req.body;
 
-  try {
-    // const user_id = req.user._id;
-    const flashcard = await FlashCards.create({
-      frontSide,
-      backSide,
-      category,
-      //   user_id,
-    });
+	try {
+		const flashcard = await FlashCards.create({
+			frontSide,
+			backSide,
+			category,
+		});
 
-    res.status(200).json(flashcard);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
+		res.status(200).json(flashcard);
+	} catch (error) {
+		res.status(400).json({ error: error.message });
+	}
 };
 
 // Read all flashcards of the user
@@ -34,11 +32,11 @@ const getFlashCards = async (req, res) => {
 // Update single flashcard of the user
 
 const updateFlashcard = async (req, res) => {
-  //   const user_id = req.params._id;
+	//   const user_id = req.params._id;
 
-  // const { id } = req.params;
+	// const { id } = req.params;
 
-  // FIND FLASHCARD BY ID
+	// FIND FLASHCARD BY ID
 
   // check if id exists
   //   if (!mongoose.Types.ObjectId.isValid(user_id)) {
@@ -94,8 +92,8 @@ const deleteFlashcard = async (req, res) => {
 // TODO: find cards by category
 
 module.exports = {
-  createFlashCard,
-  getFlashCards,
-  updateFlashcard,
-  deleteFlashcard,
+	createFlashCard,
+	getFlashCards,
+	updateFlashcard,
+	deleteFlashcard,
 };

@@ -23,7 +23,7 @@ const createFlashCard = async (req, res) => {
 // Read all flashcards of the user
 const getFlashCards = async (req, res) => {
 	//   const user_id = req.user._id;
-	console.log(req);
+
 	const flashcards = await FlashCards.find({});
 	//display status then flashcards
 	res.status(200).json(flashcards);
@@ -60,7 +60,7 @@ const updateFlashcard = async (req, res) => {
 // should delete the flashcard using its name not user id
 const deleteFlashcard = async (req, res) => {
 	// get frontSide from req.body
-	const { frontSide } = req.body;
+	const { id } = req.params;
 	//   const { user_id } = req.params; //{ id }
 
 	// check if id exists
@@ -68,15 +68,13 @@ const deleteFlashcard = async (req, res) => {
 	//     return res.status(404).json({ error: "id does not exists" });
 	//   }
 	try {
-		const deleteCard = await FlashCards.findOneAndDelete({
-			frontSide: frontSide,
-		});
+		const deleteCard = await FlashCards.findOneAndDelete({ _id: id });
 		if (!deleteCard) {
 			return res.status(404).json({ error: 'cant delete' });
 		}
 		res.status(200).json(deleteCard);
 	} catch (error) {
-		return res.status(404).json({ error: 'cant delete' });
+		return res.status(404).json('DELETE SUCCESSFUL', { error: 'cant delete' });
 	}
 };
 

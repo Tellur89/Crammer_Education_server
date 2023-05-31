@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 });
 
 // ROUTES
-app.use('/users', userRoutes);
 app.use('/flashcards', flashcardsRoutes);
+app.use('/users', userRoutes);
 
 module.exports = app;

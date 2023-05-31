@@ -8,10 +8,7 @@ router.use(auth);
 router
   .route("/")
   .get(cardController.getFlashCards)
-  .post(cardController.createFlashCard);
-
-router
-  .route("/:id")
+  .post(cardController.createFlashCard)
   .patch(cardController.updateFlashcard)
   .delete(cardController.deleteFlashcard);
 

@@ -22,6 +22,6 @@ const flashcardSchema = new Schema(
     // 	// required: true,
     // },
   },
-  { timestamp: true }
+  { timestamps: true }
 );
 module.exports = mongoose.model("Flashcard", flashcardSchema);

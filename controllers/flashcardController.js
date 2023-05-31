@@ -26,6 +26,7 @@ const createFlashCard = async (req, res) => {
 const getFlashCards = async (req, res) => {
   //should find all the flashcard for the user
   const flashcards = await FlashCards.find({}).sort({ create_At: -1 });
+  // console.log(req.headers.authorization);
   //display status then flashcards
   res.status(200).json(flashcards);
 };

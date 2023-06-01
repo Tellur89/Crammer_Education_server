@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">25.92% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>7/28</span>
+                <span class='fraction'>7/27</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">25.92% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>7/28</span>
+                <span class='fraction'>7/27</span>
             </div>
         
             
@@ -151,15 +151,13 @@
 <a name='L86'></a><a href='#L86'>86</a>
 <a name='L87'></a><a href='#L87'>87</a>
 <a name='L88'></a><a href='#L88'>88</a>
-<a name='L89'></a><a href='#L89'>89</a>
-<a name='L90'></a><a href='#L90'>90</a>
-<a name='L91'></a><a href='#L91'>91</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<a name='L89'></a><a href='#L89'>89</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -176,17 +174,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -213,7 +211,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -224,8 +222,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -237,7 +233,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -268,7 +264,7 @@ const createFlashCard = <span class="fstat-no" title="function not covered" >as<
 // Read all flashcards of the user
 const getFlashCards = <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 	//   const user_id = req.user._id;
-<span class="cstat-no" title="statement not covered" >	console.log(req);</span>
+&nbsp;
 	const flashcards = <span class="cstat-no" title="statement not covered" >await FlashCards.find({});</span>
 	//display status then flashcards
 <span class="cstat-no" title="statement not covered" >	res.status(200).json(flashcards);</span>
@@ -305,7 +301,7 @@ const updateFlashcard = <span class="fstat-no" title="function not covered" >as<
 // should delete the flashcard using its name not user id
 const deleteFlashcard = <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 	// get frontSide from req.body
-	const { frontSide } = <span class="cstat-no" title="statement not covered" >req.body;</span>
+	const { id } = <span class="cstat-no" title="statement not covered" >req.params;</span>
 	//   const { user_id } = req.params; //{ id }
 &nbsp;
 	// check if id exists
@@ -313,15 +309,13 @@ const deleteFlashcard = <span class="fstat-no" title="function not covered" >as<
 	//     return res.status(404).json({ error: "id does not exists" });
 	//   }
 <span class="cstat-no" title="statement not covered" >	try {</span>
-		const deleteCard = <span class="cstat-no" title="statement not covered" >await FlashCards.findOneAndDelete({</span>
-			frontSide: frontSide,
-		});
+		const deleteCard = <span class="cstat-no" title="statement not covered" >await FlashCards.findOneAndDelete({ _id: id });</span>
 <span class="cstat-no" title="statement not covered" >		if (!deleteCard) {</span>
 <span class="cstat-no" title="statement not covered" >			return res.status(404).json({ error: 'cant delete' });</span>
 		}
 <span class="cstat-no" title="statement not covered" >		res.status(200).json(deleteCard);</span>
 	} catch (error) {
-<span class="cstat-no" title="statement not covered" >		return res.status(404).json({ error: 'cant delete' });</span>
+<span class="cstat-no" title="statement not covered" >		return res.status(404).json('DELETE SUCCESSFUL', { error: 'cant delete' });</span>
 	}
 };
 &nbsp;
@@ -340,7 +334,7 @@ module.exports = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-05-31T12:09:55.547Z
+                at 2023-06-01T09:32:26.505Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

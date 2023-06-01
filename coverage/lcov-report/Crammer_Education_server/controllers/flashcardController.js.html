@@ -162,26 +162,22 @@
 <a name='L97'></a><a href='#L97'>97</a>
 <a name='L98'></a><a href='#L98'>98</a>
 <a name='L99'></a><a href='#L99'>99</a>
-<a name='L100'></a><a href='#L100'>100</a>
-<a name='L101'></a><a href='#L101'>101</a>
-<a name='L102'></a><a href='#L102'>102</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<a name='L100'></a><a href='#L100'>100</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -189,7 +185,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -199,7 +195,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -235,7 +231,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -259,34 +255,32 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const FlashCards = require("../models/Flashcard");
-const mongoose = require("mongoose");
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const FlashCards = require('../models/Flashcard');
+const mongoose = require('mongoose');
 &nbsp;
 //CRUD format
 &nbsp;
 // Create new flashcard
 const createFlashCard = <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
-  const { frontSide, backSide, category } = <span class="cstat-no" title="statement not covered" >req.body;</span>
+	const { frontSide, backSide, category } = <span class="cstat-no" title="statement not covered" >req.body;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  try {</span>
-    // const user_id = req.user._id;
-    const flashcard = <span class="cstat-no" title="statement not covered" >await FlashCards.create({</span>
-      frontSide,
-      backSide,
-      category,
-      //   user_id,
-    });
+<span class="cstat-no" title="statement not covered" >	try {</span>
+		const flashcard = <span class="cstat-no" title="statement not covered" >await FlashCards.create({</span>
+			frontSide,
+			backSide,
+			category,
+		});
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    res.status(200).json(flashcard);</span>
-  } catch (error) {
-<span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>
-  }
+<span class="cstat-no" title="statement not covered" >		res.status(200).json(flashcard);</span>
+	} catch (error) {
+<span class="cstat-no" title="statement not covered" >		res.status(400).json({ error: error.message });</span>
+	}
 };
 &nbsp;
 // Read all flashcards of the user
@@ -301,11 +295,11 @@ const getFlashCards = <span class="fstat-no" title="function not covered" >as</s
 // Update single flashcard of the user
 &nbsp;
 const updateFlashcard = <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
-  //   const user_id = req.params._id;
+	//   const user_id = req.params._id;
 &nbsp;
-  // const { id } = req.params;
+	// const { id } = req.params;
 &nbsp;
-  // FIND FLASHCARD BY ID
+	// FIND FLASHCARD BY ID
 &nbsp;
   // check if id exists
   //   if (!mongoose.Types.ObjectId.isValid(user_id)) {
@@ -361,10 +355,10 @@ const deleteFlashcard = <span class="fstat-no" title="function not covered" >as<
 // TODO: find cards by category
 &nbsp;
 module.exports = {
-  createFlashCard,
-  getFlashCards,
-  updateFlashcard,
-  deleteFlashcard,
+	createFlashCard,
+	getFlashCards,
+	updateFlashcard,
+	deleteFlashcard,
 };
 &nbsp;</pre></td></tr></table></pre>
 
@@ -373,7 +367,7 @@ module.exports = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-05-31T13:51:11.768Z
+                at 2023-05-31T16:03:20.149Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

@@ -1,29 +1,34 @@
-const FlashCards = require('../models/Flashcard');
-const mongoose = require('mongoose');
+const FlashCards = require("../models/Flashcard");
+const User = require("../models/User");
+const mongoose = require("mongoose");
 
 //CRUD format
 
 // Create new flashcard
 const createFlashCard = async (req, res) => {
-	const { frontSide, backSide, category } = req.body;
+  const { frontSide, backSide, category, username } = req.body;
 
-	try {
-		const flashcard = await FlashCards.create({
-			frontSide,
-			backSide,
-			category,
-		});
+  try {
+    const flashcard = await FlashCards.create({
+      frontSide,
+      backSide,
+      category,
+      username,
+    });
 
-		res.status(200).json(flashcard);
-	} catch (error) {
-		res.status(400).json({ error: error.message });
-	}
+    res.status(200).json(flashcard);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 };
 
 // Read all flashcards of the user
 const getFlashCards = async (req, res) => {
   //should find all the flashcard for the user
-  const flashcards = await FlashCards.find({}).sort({ create_At: -1 });
+  const username = req.rawHeaders[7];
+  const flashcards = await FlashCards.find({ username: username }).sort({
+    create_At: -1,
+  });
   // console.log(req.headers.authorization);
   //display status then flashcards
   res.status(200).json(flashcards);
@@ -32,18 +37,12 @@ const getFlashCards = async (req, res) => {
 // Update single flashcard of the user
 
 const updateFlashcard = async (req, res) => {
-	//   const user_id = req.params._id;
+  //   const user_id = req.params._id;
 
-	// const { id } = req.params;
+  // const { id } = req.params;
 
-	// FIND FLASHCARD BY ID
+  // FIND FLASHCARD BY ID
 
-  // check if id exists
-  //   if (!mongoose.Types.ObjectId.isValid(user_id)) {
-  //     //{ id }
-  //     return res.status(404).json({ error: "No such userid" });
-  //   }
-  // execute find and update cmd
   const { _id, frontSide, backSide, category } = req.body;
   console.log(_id);
   try {
@@ -69,7 +68,8 @@ const updateFlashcard = async (req, res) => {
 // should delete the flashcard using its name not user id
 const deleteFlashcard = async (req, res) => {
   // get frontSide from req.body
-  const { _id } = req.body;
+  const id = req.params.id;
+  console.log(id);
   //   const { user_id } = req.params; //{ id }
 
   // check if id exists
@@ -78,7 +78,7 @@ const deleteFlashcard = async (req, res) => {
   //   }
   try {
     const deleteCard = await FlashCards.findOneAndDelete({
-      _id,
+      _id: id,
     });
     if (!deleteCard) {
       return res.status(404).json({ error: "cant delete" });
@@ -92,8 +92,8 @@ const deleteFlashcard = async (req, res) => {
 // TODO: find cards by category
 
 module.exports = {
-	createFlashCard,
-	getFlashCards,
-	updateFlashcard,
-	deleteFlashcard,
+  createFlashCard,
+  getFlashCards,
+  updateFlashcard,
+  deleteFlashcard,
 };

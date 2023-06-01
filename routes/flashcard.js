@@ -1,6 +1,6 @@
-const { Router } = require('express');
-const cardController = require('../controllers/flashcardController');
-const auth = require('../middleware/auth');
+const { Router } = require("express");
+const cardController = require("../controllers/flashcardController");
+const auth = require("../middleware/auth");
 
 const router = Router();
 
@@ -11,5 +11,7 @@ router
   .post(cardController.createFlashCard)
   .patch(cardController.updateFlashcard)
   .delete(cardController.deleteFlashcard);
+
+router.route("/:id").delete(cardController.deleteFlashcard);
 
 module.exports = router;

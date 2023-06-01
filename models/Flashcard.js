@@ -1,22 +1,25 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
 const flashcardSchema = new Schema(
-	{
-		frontSide: {
-			type: String,
-			required: true,
-		},
-		backSide: {
-			type: String,
-			required: true,
-		},
-		category: {
-			type: String,
-			required: true,
-		},
-	},
-	{ timestamps: true }
+  {
+    frontSide: {
+      type: String,
+      required: true,
+    },
+    backSide: {
+      type: String,
+      required: true,
+    },
+    category: {
+      type: String,
+      required: true,
+    },
+    username: {
+      type: String,
+    },
+  },
+  { timestamps: true }
 );
-module.exports = mongoose.model('Flashcard', flashcardSchema);
+module.exports = mongoose.model("Flashcard", flashcardSchema);

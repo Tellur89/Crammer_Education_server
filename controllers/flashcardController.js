@@ -22,11 +22,13 @@ const createFlashCard = async (req, res) => {
 
 // Read all flashcards of the user
 const getFlashCards = async (req, res) => {
+
   //should find all the flashcard for the user
   const flashcards = await FlashCards.find({}).sort({ create_At: -1 });
   // console.log(req.headers.authorization);
   //display status then flashcards
   res.status(200).json(flashcards);
+
 };
 
 // Update single flashcard of the user
@@ -68,25 +70,25 @@ const updateFlashcard = async (req, res) => {
 // Delete single flashcard of the user
 // should delete the flashcard using its name not user id
 const deleteFlashcard = async (req, res) => {
-  // get frontSide from req.body
-  const { _id } = req.body;
-  //   const { user_id } = req.params; //{ id }
 
-  // check if id exists
-  //   if (!mongoose.Types.ObjectId.isValid(user_id)) {
-  //     return res.status(404).json({ error: "id does not exists" });
-  //   }
-  try {
-    const deleteCard = await FlashCards.findOneAndDelete({
-      _id,
-    });
-    if (!deleteCard) {
-      return res.status(404).json({ error: "cant delete" });
-    }
-    res.status(200).json({ update: "This card has been deleted" });
-  } catch (error) {
-    return res.status(404).json({ error: "cant delete" });
-  }
+	// get frontSide from req.body
+	const { id } = req.params;
+	//   const { user_id } = req.params; //{ id }
+
+	// check if id exists
+	//   if (!mongoose.Types.ObjectId.isValid(user_id)) {
+	//     return res.status(404).json({ error: "id does not exists" });
+	//   }
+	try {
+		const deleteCard = await FlashCards.findOneAndDelete({ _id: id });
+		if (!deleteCard) {
+			return res.status(404).json({ error: 'cant delete' });
+		}
+		res.status(200).json(deleteCard);
+	} catch (error) {
+		return res.status(404).json('DELETE SUCCESSFUL', { error: 'cant delete' });
+	}
+
 };
 
 // TODO: find cards by category

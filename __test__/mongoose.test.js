@@ -20,7 +20,7 @@ afterAll(async () => {
 });
 
 describe("User Model", () => {
-  xit("should create a new user", async () => {
+  it("should create a new user", async () => {
     const userData = {
       username: "John Doe",
       email: "john@example.com",

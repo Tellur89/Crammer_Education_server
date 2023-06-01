@@ -12,7 +12,7 @@ const app = express();
 app.use(express.json());
 app.use(router);
 
-xtest("POST /login should return http status 200", async () => {
+test("POST /login should return http status 200", async () => {
   const mockReq = {
     body: {
       username: "User",

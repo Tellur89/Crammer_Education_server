@@ -16,7 +16,7 @@ describe("Auth Middleware", () => {
     await User.deleteMany({});
   });
 
-  xit("should return 401 if no authorization header is provided", async () => {
+  it("should return 401 if no authorization header is provided", async () => {
     const response = await request.get("/flashcards");
 
     expect(response.status).toBe(401);

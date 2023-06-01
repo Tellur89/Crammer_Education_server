@@ -15,7 +15,7 @@ describe("server", () => {
     api.close(done);
   });
 
-  xit("responds to GET / with status 200", (done) => {
+  it("responds to GET / with status 200", (done) => {
     request(api).get("/").expect(200, done);
   });
 });

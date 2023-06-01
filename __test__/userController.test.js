@@ -29,7 +29,7 @@ describe("User Controller test", () => {
     api.close(done);
   });
 
-  xit("createToken should generate a valid token with the given ID", () => {
+  it("createToken should generate a valid token with the given ID", () => {
     process.env.SECRET_KEY = "my-secret-key";
 
     jwt.sign = jest.fn();
@@ -43,7 +43,7 @@ describe("User Controller test", () => {
     });
   });
 
-  xit("respond to creating new user with status 200", async () => {
+  it("respond to creating new user with status 200", async () => {
     const testData = {
       username: "user212222",
       email: "tom1232222@gmail.com",

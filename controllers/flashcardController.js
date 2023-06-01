@@ -24,6 +24,7 @@ const createFlashCard = async (req, res) => {
 
 // Read all flashcards of the user
 const getFlashCards = async (req, res) => {
+
   //should find all the flashcard for the user
   const username = req.rawHeaders[7];
   const flashcards = await FlashCards.find({ username: username }).sort({
@@ -32,6 +33,7 @@ const getFlashCards = async (req, res) => {
   // console.log(req.headers.authorization);
   //display status then flashcards
   res.status(200).json(flashcards);
+
 };
 
 // Update single flashcard of the user
@@ -67,6 +69,7 @@ const updateFlashcard = async (req, res) => {
 // Delete single flashcard of the user
 // should delete the flashcard using its name not user id
 const deleteFlashcard = async (req, res) => {
+
   // get frontSide from req.body
   const id = req.params.id;
   console.log(id);
@@ -87,6 +90,7 @@ const deleteFlashcard = async (req, res) => {
   } catch (error) {
     return res.status(404).json({ error: "cant delete" });
   }
+
 };
 
 // TODO: find cards by category

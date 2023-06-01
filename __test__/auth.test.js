@@ -1,3 +1,4 @@
+
 const jwt = require("jsonwebtoken");
 const request = require("supertest");
 const User = require("../models/User");
@@ -38,3 +39,4 @@ describe("Auth Middleware", () => {
   // 	expect(response.body.user._id).toBe(user._id.toString());
   // });
 });
+
